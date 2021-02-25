@@ -1,67 +1,54 @@
-import java.util.Scanner;
-
-public class contarnumeros {
-    public static void main(String[] args){
-        contarnumeros programa = new contarnumeros();
+public class Amstrong{
+    
+    public static void main(String[] args) {
+        Amstrong programa = new Amstrong();
         programa.inicio();
     }
 
     public void inicio() {
-        int res=entradaNum();
-        int cont=contador(res);
-        boolean amn= numArmstrong(res);
-        System.out.println("el numero tiene: "+cont+" digitos");
-        System.out.println(res+" ¿es un numero ARMSTRONG? "+amn);
+        int res=numeros();
+        System.out.println(res);
     }
-    //entrada de valores: no ya que todo se genera adentro
-    //salida : si = INT
-    public int entradaNum(){
-        Scanner entrada = new Scanner(System.in);
+
+    //paremetros de entradas= no (se genera desde aqui)
+    //parametros de salida = si int (la variable num)
+    public int numeros(){
         int num=0;
-        boolean ok = false;
-        while(!ok){
-            System.out.print("Introduzca el numero: ");
-            ok=entrada.hasNextInt();
-            if(ok){
-                num = entrada.nextInt();
-                if(num<=0){
-                    System.out.println("Los numeros negativos no son validos");
-                }
-            }else{
-                System.out.println("Caracter no valido");
-                entrada.next();
+        for(int i=0;i<=153;i++){
+            if(amstrong(i)){ //aqui unicamente hacemos que imprimamos los numeros amstrong (unicamente si amstrong es true)
+                System.out.println(i + " : es Amstrong\n");
+                num++;
             }
-        }
-        entrada.nextLine();
-        return num; 
 
-        //En este metodo nosotros hacemos una comprobacion del dato que va ser un numero entero que no sea negativo
-    }
-    //entrada = si un int que viene del metodo entradaNum()
-    //salidas de un boolean (es una funcion heredada )
-    public boolean numArmstrong(int num) { //valor que necesita ser heredado
-       int numero=num; 
-       int digitos =0;
-       while(numero>0) {
-            int aux=numero%10;
-            numero=numero/10;
-            digitos =digitos+(int)Math.pow(aux,3); //empleo del metodo matematico de Numero Narcisista con el metodo matematico 
-            //lo hice en un bucle similar al metodo de contador, pero con la diferencia de que para el proceso de elevar los numeros que entren donde en digitos se vuelven a sumar los numeros elavados a la potencia exponente
         }
-        return digitos==num; //operadores logicos que quiere decir que si los dos valores son iguales seran true de no cumplirce sera false
-        
+        return num;
     }
-
-    //entrada = si un int que viene del metodo entradaNum()
-    //salidas de un INT (es una funcion heredada )
-    public int contador(int num){
-        int contador=0;
+    //parametros de entrada = si (num)
+    //parametros de salidaes = si (boolean) 
+    public boolean amstrong(int num) {
+        int numDigitos = Contador(num); //llamada a la funcion de contar numeros para saber a cuanto elevar
+        int ro=0,resto=0,aux=num;
+        while(aux>0){
+            resto=aux%10;
+            ro=ro+(int) Math.pow(resto, numDigitos); //proceso matematico donde hacemos el calculo si es narcisista
+            aux=aux/10;
+        }
+        return ro==num; //devolvemos con un operado logico boleano (devuelve si es True o False)
+    }
+    
+    //parametros de entrada = si int (num de numeros())
+    //parameros de salida = si int (variable digito)
+    public int Contador(int num) {
+        int digito=0;
         while(num>0){
+            digito++;
             num=num/10;
-            contador++;
         }
-        return contador;
 
-        //En este metodo yo hice un contador de las cifras que tiene este numero 
+        return digito;
     }
+
+    
+
+    
 }
