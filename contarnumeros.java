@@ -14,7 +14,7 @@ public class Amstrong{
     //parametros de salida = si int (la variable num)
     public int numeros(){
         int num=0;
-        for(int i=0;i<=153;i++){
+        for(int i=0;i<=10000;i++){
             if(amstrong(i)){ //aqui unicamente hacemos que imprimamos los numeros amstrong (unicamente si amstrong es true)
                 System.out.println(i + " : es Amstrong\n");
                 num++;
