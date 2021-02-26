@@ -16,9 +16,9 @@ public class DNI{
         char dnil=calcularLetra();
 
         if(dnil!=letras[dnin]){
-            System.out.println("La letra que se: "+letras[dnin]);
+            System.out.println("La letra que se esperaba es: "+letras[dnin]);
         }else{
-            System.out.println("El numero de DNI "+res+"contuene la letra: "+letras[dnin]);
+            System.out.println("El numero de DNI "+res+" contiene la letra: "+letras[dnin]);
             System.out.println("la letra de DNI es correcta: "+letras[dnin]);
         }
     }
@@ -49,6 +49,7 @@ public class DNI{
         int dnin=0;
         if((dni<DNIMIN)||(dni>DNIMX)){
             System.out.println("El Numero no es Correcto: "+dni);
+            int ret=numeroDNI();
         }else{
             dnin=dni%23;
         }
